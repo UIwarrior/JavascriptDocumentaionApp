@@ -1,0 +1,52 @@
+<div
+    className="card-body"
+    ref={cardContent}
+    style={{ flexDirection: cardTitle === 'Position' ? 'column' : 'row' }}
+>
+    {cardSectionArr.map((element: object, index: number) => (
+        <div className="card-data">
+            <h4 className="card-subtitle">{element['section']}</h4>
+            <div className="card-subsection">
+                {element['fields'].map((element2, index2) => (
+                    <div className="card-subsection-data">
+                        <p className="card-subsection-label">{element2['name']}</p>
+                        <span className="card-subsection-value">{element2['value']}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    ))}
+</div>
+
+<div className="card-body" ref={cardContent}>
+     {index === 0 && <div className="card-divider-vertical"></div>}
+    {index === 0 && element['section'] === 'Access' && (
+                <div className="card-divider-vertical"></div>
+            )}
+                        {index === 0 && element['section']==='' &&  <span className="card-divider-horizontal"></span>}
+
+    <div className="card-data">
+        <h4 className="card-subtitle">Access</h4>
+        <div className="card-subsection">
+            <div className="card-subsection-data">
+                <p className="card-subsection-label">Account Status</p>
+                <span className="card-subsection-value">Not activated</span>
+            </div>
+            <div className="card-subsection-data">
+                <p className="card-subsection-label">Lock Status</p>
+                <span className="card-subsection-value">locked</span>
+            </div>
+        </div>
+    </div>
+    <span className="card-divider"></span>
+    <div className="card-data">
+        <h4 className="card-subtitle">Settings</h4>
+        <div className="card-subsection">
+            <div>
+                <p className="card-subsection-label">Login Profile</p>
+                <span className="card-subsection-value">arnab</span>
+            </div>
+        </div>
+    </div>
+</div> 
+            <span className="card-divider"></span>

@@ -1,9 +1,15 @@
 import React from 'react';
 import { Card } from '../styled-components/card';
 import { userAccountArr } from '../data/staticData'
-const viewDetails = () => {
+const viewDetails = ({props}) => {
+
+    const [data, setCardData] = useState([])
     return (
-        <Card cardTitle="User Account" cardSectionArr={userAccountArr} />
+        <Card>
+            {data.map(val => {
+                return <CardBody>{val}</CardBody>
+            })}
+        </Card>
     )
 }
 
