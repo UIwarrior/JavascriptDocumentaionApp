@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import styled from 'styled-components';
+import {
+    Row,
+    Col,
+    Card, 
+  } from '@bootstrap-styled/v4';
+  
 
-const Card = styled.div`
+const LearnCard = styled(Card)`
     position: relative;
     padding: 10px;
     min-width: 0;
@@ -55,7 +61,7 @@ const CardSubSection = styled.div`
     flex-wrap: wrap;
 `;
 
-const CardSubSectionData = styled.div`
+const crdSubSectionData = styled.div`
     flex-basis: 300px;
     flex-grow: 2;
     margin: 10px;
@@ -69,7 +75,7 @@ const CardSubSectionValue = styled.span`
     color: #949393;
 `;
 
-export {
+export{
     Card,
     CardHeader,
     CardAction,
@@ -80,7 +86,6 @@ export {
     CardData,
     CardSubtitle,
     CardSubSection,
-    CardSubSectionData,
     CardSubSectionLabel,
     CardSubSectionValue,
 };

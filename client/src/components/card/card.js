@@ -1,9 +1,8 @@
 import React from 'react';
-import { Card, CardHeader, CardBody } from '../../styled-components/card';
+import { LearnCard, CardHeader, CardBody } from '../../styled-components/card';
 import {Collapse } from 'bootstrap-styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-const LCard = ({isOpen}) => {
+const LCard = ({isOpen, ref}) => {
 
     //using useref for expand/collapse arrow with card
     const cardContent = useRef(null);
@@ -23,11 +22,11 @@ const LCard = ({isOpen}) => {
     console.log(cardSectionArr);
 
     return (
-          <Card>
+          <LearnCard ref={ref}>
            <Collapse isOpen={isOpen}>
            <CardBody ref={cardContent}>{children}</CardBody>
            </Collapse>
-          </Card>
+          </LearnCard>
     )
 }
 
