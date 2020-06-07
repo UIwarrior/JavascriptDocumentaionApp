@@ -1,6 +1,6 @@
 import React from  'react';
 import FormComp from '../components/Form';
-import axiosInstance from '../api';
+import axiosInstance from '../core/api';
   
 const createForm  = () => {
     

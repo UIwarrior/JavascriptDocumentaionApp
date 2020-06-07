@@ -20,7 +20,7 @@ const LearnCard = styled(Card)`
     margin: 10px;
 `;
 
-const CardHeader = styled.div`
+const LearnCardHeader = styled.div`
     display: flex;
     flex-direction: row;
 `;
@@ -76,8 +76,8 @@ const CardSubSectionValue = styled.span`
 `;
 
 export{
-    Card,
-    CardHeader,
+    LearnCard,
+    LearnCardHeader,
     CardAction,
     CardBody,
     CardTitle,

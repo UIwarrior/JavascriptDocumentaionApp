@@ -29,7 +29,7 @@ router.post('/storedocument', function(req, res) {
 
 
 router.get('/getdocument', function(req, res) {
-    //console.log(req);
+    console.log("received request", req);
     AddExpenseModel.find().then(documents => {
             console.log(documents);
             console.log('india expense');

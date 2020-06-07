@@ -1,4 +1,4 @@
-import axiosInstance from "../../api";
+import axiosInstance from "../../core/api";
 
 
 const FETCH_DOCS_SUCCESS = "FETCH_DOCS_SUCCESS";

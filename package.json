@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm start\" \"npm run start:server\"",
     "start": "webpack-dev-server --mode development --open --hot",
-    "start:server": "cd server && nodemon server.js",
+    "start-server": "cd server && nodemon server.js",
     "build": "webpack --mode production",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -40,6 +40,7 @@
     "express-graphql": "^0.9.0",
     "googleapis": "^39.2.0",
     "graphql": "^15.0.0",
+    "history": "^4.10.1",
     "mongoose": "^5.9.14",
     "prettier": "^1.19.1",
     "react": "^16.12.0",

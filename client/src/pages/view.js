@@ -1,15 +1,10 @@
 import React from 'react';
 import { Card } from '../styled-components/card';
 // import { userAccountArr } from '../data/staticData'
-const viewDetails = ({props}) => {
-
-    const [data, setCardData] = useState([])
+const viewDetails = (props) => {
+    console.log("props", props);
     return (
-        <Card>
-         /*    {data.map(val => {
-                return <CardBody>{val}</CardBody>
-            })} */
-        </Card>
+        <DetailDashboard description = {props.description} heading = {props.heading} />
     )
 }
 
