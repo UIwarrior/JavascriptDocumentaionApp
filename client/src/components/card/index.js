@@ -3,6 +3,7 @@ import { LearnCard, CardHeader, CardBody } from '../../styled-components/card';
 import {Collapse } from 'bootstrap-styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BootstrapProvider from '@bootstrap-styled/provider/lib/BootstrapProvider';
+import { Card } from '@bootstrap-styled/v4';
 const LCard = ({isOpen, ref, children}) => {
 
     //using useref for expand/collapse arrow with card
@@ -21,9 +22,9 @@ const LCard = ({isOpen, ref, children}) => {
     //console.log(cardSectionArr);
 
     return (
-          <LearnCard ref={ref}>
+          <Card ref={ref}>
               {children}
-          </LearnCard>
+          </Card>
     )
 }
 

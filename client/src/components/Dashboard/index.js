@@ -1,10 +1,11 @@
+import React from 'react';
 import { Media } from '@bootstrap-styled/v4';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const DetailDashboard = ({description, heading}) => {
  return (
     <Media>
-    <Media href="javascript:;" className="text-center">
-      <Media fluid object src={favicon} className="w-50" alt="64x64" />
+    <Media className="text-center">
     </Media>
     <Media body>
       <Media heading>
