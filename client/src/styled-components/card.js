@@ -8,7 +8,7 @@ import {
   
 
 const LearnCard = styled(Card)`
-    position: relative;
+${'' /*     position: relative;
     padding: 10px;
     min-width: 0;
     word-wrap: break-word;
@@ -17,7 +17,7 @@ const LearnCard = styled(Card)`
     box-shadow: 0px 2px 10px 2px grey;
     border-top: 5px solid cornflowerblue;
     border-radius: 0.25rem;
-    margin: 10px;
+    margin: 10px; */}
 `;
 
 const LearnCardHeader = styled.div`

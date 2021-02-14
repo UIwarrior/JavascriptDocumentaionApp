@@ -18,11 +18,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.tsx?$/,
-                loader: 'awesome-typescript-loader',
-                exclude: /node_modules/,
-            },
-            {
                 test: /.js$/,
                 loader: 'source-map-loader',
                 enforce: 'pre',
@@ -51,3 +46,10 @@ module.exports = {
         // hot: true,
       }
 };
+
+
+/* {
+    test: /.tsx?$/,
+    loader: 'awesome-typescript-loader',
+    exclude: /node_modules/,
+}, */

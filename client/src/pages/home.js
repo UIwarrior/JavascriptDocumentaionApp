@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux';
 import LCard from '../components/card';
 import { CardTitle } from '../styled-components/card';
 import { Link, useHistory } from 'react-router-dom';
+import { CardDeck } from '@bootstrap-styled/v4/lib/Cards';
 //import { useSelector } from 'react-redux/lib/hooks/useSelector';
 
 const Home = (props) => {
@@ -21,7 +22,8 @@ const Home = (props) => {
     useEffect(() => {
  
         props.docsFetchData();
-
+        console.log("card ref", cardRef.current);
+        console.log("row ref", rowRef.current);
     }, [])
 
     let history = useHistory();
@@ -29,15 +31,20 @@ const Home = (props) => {
     function handleClick(data) {
      history.push({
       pathname: '/view',
-     state: data
+      search: '?id='+data._id,
+      state: {},
      })
     }
     
+    const rowRef = React.createRef();
+
+    const cardRef = React.createRef();
 
     return (
         <Container style={{margin:"20px"}}>
-            <Row><Col sm={12}><Header>Home Page</Header></Col></Row>
+            <Row ref={rowRef}><Col sm={12}><Header>Home Page</Header></Col></Row>
             <Row>
+                <CardDeck  ref={cardRef}>
                 {docs.map(val => (
                     <LCard>
                     <p>{val.title}</p>
@@ -47,6 +54,8 @@ const Home = (props) => {
                    </LCard>
                 )
                 )}
+                </CardDeck>
+               
             </Row>
         </Container>
     );
