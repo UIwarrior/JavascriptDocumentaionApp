@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { docsFetchData } from '../redux/actions';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { useHistory } from 'react-router-dom';
 //import { useSelector } from 'react-redux/lib/
 import Masonry from '@mui/lab/Masonry';
-import { Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { Card, CardActions, CardContent, CardMedia, Typography, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Button from '../styled-components/Button';
+import { docsFetchData, selectDocsData } from '../redux/slices/docs';
 
 const useStyles = makeStyles({
   root: {
@@ -28,16 +28,13 @@ const useStyles = makeStyles({
 
 const Home = (props) => {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   console.log(props);
   console.log('coming back props');
-  const { docs = [] } = props;
-  //const [cardArr, setCardArr] = useState([]);
+  const docs = useSelector(selectDocsData);
 
   useEffect(() => {
-    props.docsFetchData();
-    console.log('card ref', cardRef.current);
-    console.log('row ref', rowRef.current);
+    dispatch(docsFetchData());
   }, []);
 
   let history = useHistory();
@@ -50,50 +47,53 @@ const Home = (props) => {
     });
   }
 
-  const rowRef = React.createRef();
-
-  const cardRef = React.createRef();
-
   return (
-    <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={4} sx={{ p: 4 }}>
-      {docs.map((val, index) => (
-        <Card key={index}>
-          <CardContent>
-            <Typography variant="overline" color="text.primary" display="block">
-              {val.title}
-            </Typography>
-            <Typography variant="h5" component="h2" sx={{ fontWeight: 'medium', mb: 1.5, wordBreak: 'break-word' }}>
+    <Box sx={{ p: 4 }}>
+      <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={4}>
+        {docs?.map((val, index) => (
+          <Card
+            key={index}
+            elevation={3}
+            sx={{
+              bgcolor: 'grey.50', // A very light grey background
+              transition: 'box-shadow 0.3s ease-in-out',
+              '&:hover': {
+                boxShadow: 10,
+                pointerEvents: 'hand',
+              },
+            }}
+          >
+            <CardContent>
+              <Typography variant="h6" color="text.primary" display="block">
+                {val.title}
+              </Typography>
+              {/*            <Typography variant="h5" component="h2" sx={{ fontWeight: 'medium', mb: 1.5, wordBreak: 'break-word' }}>
               {val.subtitle}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {val.description}
-            </Typography>
-          </CardContent>
-          <CardActions sx={{ pl: 2, pb: 2 }}>
-            <Button size="small" variant="contained">
-              Read More
-            </Button>
-          </CardActions>
-        </Card>
-      ))}
-    </Masonry>
+            </Typography> */}
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  mt: 1,
+                  display: '-webkit-box',
+                  overflow: 'hidden',
+                  WebkitBoxOrient: 'vertical',
+                  WebkitLineClamp: 3, // Limit to 3 lines
+                }}
+              >
+                {val.description}
+              </Typography>
+            </CardContent>
+            <CardActions sx={{ pl: 2, pb: 2 }}>
+              <Button size="small" variant="contained">
+                Read More
+              </Button>
+            </CardActions>
+          </Card>
+        ))}
+      </Masonry>
+    </Box>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    docs: state.fetchDocuments.data,
-  };
-};
-
-//const mapDispatchToProps = { fetchData: docsFetchData }
-
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      docsFetchData,
-    },
-    dispatch
-  );
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

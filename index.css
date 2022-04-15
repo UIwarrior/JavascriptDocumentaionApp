@@ -1,0 +1,119 @@
+  .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background-color: #f0f2f5;
+            font-family: sans-serif;
+        }
+
+        form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* UPDATED: Grouped selector for consistent styling */
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit; /* Ensure consistent font */
+            box-sizing: border-box;
+        }
+        
+        /* NEW: Allow vertical resizing for textarea */
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        /* NEW: Button container */
+        .form-actions {
+            display: flex;
+            gap: 1rem; /* Space between buttons */
+            margin-top: 2rem;
+        }
+        
+        .form-actions button {
+            flex-grow: 1;
+            padding: 0.9rem 1.5rem; /* Increased padding */
+            font-size: 1.05rem; /* Slightly larger font */
+            font-weight: bold;
+            border-radius: 6px; /* Softer corners */
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-actions button:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .form-actions button:active {
+            transform: translateY(0); /* "Press down" effect on click */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Updated primary button style */
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0069d9;
+        }
+
+           /* --- NEW & UPDATED STYLES FOR RADIO BUTTONS --- */
+
+        /* Style the fieldset to remove default border */
+        .fieldset-group {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Container to hold the radio options */
+        .radio-options-container {
+            display: flex;
+            gap: 1.5rem; /* Space between radio options */
+            margin-top: 0.5rem;
+        }
+
+        /* Style each individual radio option */
+        .radio-option {
+            display: flex;
+            align-items: center; /* Vertically align the button and label */
+            gap: 0.5rem; /* Space between the button and its label */
+        }
+        
+        /* Make radio button slighly larger */
+        .radio-option input[type="radio"] {
+            width: 1.15em;
+            height: 1.15em;
+        }
+
+        /* Style the radio button's label */
+        .radio-option label {
+            font-weight: normal;
+            margin-bottom: 0;
+        }

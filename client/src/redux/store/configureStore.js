@@ -1,12 +1,10 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from '../reducers';
-import logger from 'redux-logger';
+import { configureStore } from '@reduxjs/toolkit';
+import docsReducer from '../slices/docs';
 
-export default function configureStore(initialState) {
-    return createStore(
-        rootReducer,
-        initialState,
-        applyMiddleware(thunk, logger)
-    );
-}
+const store = configureStore({
+  reducer: {
+    docs: docsReducer,
+  },
+});
+
+export default store;
