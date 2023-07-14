@@ -39,7 +39,7 @@ const Home = (props) => {
 
   let history = useHistory();
 
-  function handleClick(data) {
+  function handleReadMore(data) {
     history.push({
       pathname: '/view',
       search: '?id=' + data._id,
@@ -85,7 +85,7 @@ const Home = (props) => {
               </Typography>
             </CardContent>
             <CardActions sx={{ pl: 2, pb: 2 }}>
-              <Button size="small" variant="contained">
+              <Button size="small" variant="contained" onClick={() => handleReadMore(val)}>
                 Read More
               </Button>
             </CardActions>
