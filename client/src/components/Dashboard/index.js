@@ -1,19 +1,17 @@
-import { Media } from '@bootstrap-styled/v4';
+import React from 'react';
+import { NavContainer } from './styled';
 
-const DetailDashboard = ({description, heading}) => {
- return (
-    <Media>
-    <Media href="javascript:;" className="text-center">
-      <Media fluid object src={favicon} className="w-50" alt="64x64" />
-    </Media>
-    <Media body>
-      <Media heading>
-        {heading}
-      </Media>
-      {description}
-    </Media>
-  </Media>
- )
- }
+const DetailDashboard = ({ description, heading }) => {
+  const [isScrolledAway, setIsScrolledAway] = useState(true);
+  return (
+    <div>
+      <NavContainer isScrolledAway={isScrolledAway} />
+      <div className="text-center"></div>
+      <div body>
+        <div>{heading}</div>
+        {description}
+      </div>
+    </div>
+  );
+};
 export default DetailDashboard;
-

@@ -1,24 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import styled from 'styled-components';
-import {
-    Row,
-    Col,
-    Card, 
-  } from '@bootstrap-styled/v4';
-  
-
-const LearnCard = styled(Card)`
-    position: relative;
-    padding: 10px;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    box-shadow: 0px 2px 10px 2px grey;
-    border-top: 5px solid cornflowerblue;
-    border-radius: 0.25rem;
-    margin: 10px;
-`;
 
 const LearnCardHeader = styled.div`
     display: flex;
@@ -76,7 +57,6 @@ const CardSubSectionValue = styled.span`
 `;
 
 export{
-    LearnCard,
     LearnCardHeader,
     CardAction,
     CardBody,

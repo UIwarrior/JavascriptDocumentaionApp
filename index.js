@@ -8,6 +8,7 @@ import reducer from './client/src/redux/reducers/index';
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import logger from 'redux-logger';
+import { createRoot } from 'react-dom/client';
 
 const store = createStore(
     reducer,
@@ -15,9 +16,11 @@ const store = createStore(
     )
 
 
-ReactDOM.render(
-    <Provider store ={store}>
-        <App/>
-    </Provider>,  
-    document.getElementById("root")
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
 );

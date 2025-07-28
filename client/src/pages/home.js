@@ -1,73 +1,99 @@
 import React, { useEffect, useState } from 'react';
-import { Row, CardText } from '@bootstrap-styled/v4';
-import Header from '@bootstrap-styled/v4/lib/Header';
-import Col from '@bootstrap-styled/v4/lib/Col';
-import Container from '@bootstrap-styled/v4/lib/Container';
 import { docsFetchData } from '../redux/actions';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import LCard from '../components/card';
-import { CardTitle } from '../styled-components/card';
-import { Link, useHistory } from 'react-router-dom';
-//import { useSelector } from 'react-redux/lib/hooks/useSelector';
+import { useHistory } from 'react-router-dom';
+//import { useSelector } from 'react-redux/lib/
+import Masonry from '@mui/lab/Masonry';
+import { Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import Button from '../styled-components/Button';
+
+const useStyles = makeStyles({
+  root: {
+    minWidth: 275,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
 
 const Home = (props) => {
+  const classes = useStyles();
 
-    console.log(props);
-    console.log("coming back props");
-    const { docs = [] } = props;
-    //const [cardArr, setCardArr] = useState([]);
+  console.log(props);
+  console.log('coming back props');
+  const { docs = [] } = props;
+  //const [cardArr, setCardArr] = useState([]);
 
-    useEffect(() => {
- 
-        props.docsFetchData();
+  useEffect(() => {
+    props.docsFetchData();
+    console.log('card ref', cardRef.current);
+    console.log('row ref', rowRef.current);
+  }, []);
 
-    }, [])
+  let history = useHistory();
 
-    let history = useHistory();
-
-    function handleClick(data) {
-     history.push({
+  function handleClick(data) {
+    history.push({
       pathname: '/view',
-     state: data
-     })
-    }
-    
+      search: '?id=' + data._id,
+      state: {},
+    });
+  }
 
-    return (
-        <Container style={{margin:"20px"}}>
-            <Row><Col sm={12}><Header>Home Page</Header></Col></Row>
-            <Row>
-                {docs.map(val => (
-                    <LCard>
-                    <p>{val.title}</p>
-                    <p>{val.subtitle}</p>
-                     <a href={val.link} target="_blank">Click</a>
-                     <Link  onClick={() => handleClick(val)}>View Details</Link>
-                   </LCard>
-                )
-                )}
-            </Row>
-        </Container>
-    );
-}
+  const rowRef = React.createRef();
 
+  const cardRef = React.createRef();
 
+  return (
+    <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={4} sx={{ p: 4 }}>
+      {docs.map((val, index) => (
+        <Card key={index}>
+          <CardContent>
+            <Typography variant="overline" color="text.primary" display="block">
+              {val.title}
+            </Typography>
+            <Typography variant="h5" component="h2" sx={{ fontWeight: 'medium', mb: 1.5, wordBreak: 'break-word' }}>
+              {val.subtitle}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {val.description}
+            </Typography>
+          </CardContent>
+          <CardActions sx={{ pl: 2, pb: 2 }}>
+            <Button size="small" variant="contained">
+              Read More
+            </Button>
+          </CardActions>
+        </Card>
+      ))}
+    </Masonry>
+  );
+};
 
-const mapStateToProps = state => {
-    return {
-        docs: state.fetchDocuments.data
-    };
+const mapStateToProps = (state) => {
+  return {
+    docs: state.fetchDocuments.data,
+  };
 };
 
 //const mapDispatchToProps = { fetchData: docsFetchData }
 
-const mapDispatchToProps = dispatch => bindActionCreators(
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
     {
-        docsFetchData,
+      docsFetchData,
     },
-    dispatch,
-  )
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-                                                  
